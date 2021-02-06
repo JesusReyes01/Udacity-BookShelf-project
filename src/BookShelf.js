@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Shelf from './Shelf'
 
 const BookShelf = (props) => {
+  const shelves = ["Currently Reading", "Want to Read", "Read"]
 
   return(
     <div className="list-books">
@@ -12,9 +13,12 @@ const BookShelf = (props) => {
       <div className="list-books-content">
         <div>
           <div className="bookshelf">
-            <h2 className="bookshelf-title">Currently Reading</h2>
-            <Shelf 
-              books= {props.books}/>
+            {shelves.map( title => (
+              <Shelf 
+              books= {props.books}
+              shelfTitle={title}/>
+            ))}
+            
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Want to Read</h2>
