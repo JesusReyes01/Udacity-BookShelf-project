@@ -5,13 +5,15 @@ import Book from './Book';
 const Shelf = (props) => {
  
     return(
-        <div>
+        <div className="bookshelf">
             <h2 className="bookshelf-title">{props.shelfTitle}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {props.books.filter( book => book.category === 'Currently Reading').map( book => (
+                    {props.books.filter( (book) => book.category === `${props.shelfTitle}`).map( (book, i) => (
                         <Book 
-                            book = {book} />
+                            key= {i}
+                            book = {book} 
+                            handleShelfChange = {props.handleShelfChange}/>
                     ))}
                 </ol>
             </div>

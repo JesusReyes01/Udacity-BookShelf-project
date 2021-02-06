@@ -51,10 +51,16 @@ class BooksApp extends React.Component {
         bookTitle: `The Adventures of Tom Sawyer`,
         bookAuthors: 'Mark Twain'
       },
-
-    
-
     ]
+  }
+
+  handleShelfChange = (title, newCategory) => {
+    console.log('title', title)
+    console.log('newCat', newCategory)
+    console.log(this.state.books)
+    const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
+   
+    this.setState({...this.state, books: [...this.state.books, this.state.books[bookIndex].category = newCategory]})
   }
 
   render() {
@@ -64,6 +70,7 @@ class BooksApp extends React.Component {
         <Route exact path='/' render={(()=>(
           <BookShelf
             books={this.state.books}
+            handleShelfChange = {this.handleShelfChange}
           />
         ))}
         />

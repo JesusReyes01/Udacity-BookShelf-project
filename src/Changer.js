@@ -1,14 +1,27 @@
-import React from 'react';
+import { checkPropTypes } from 'prop-types';
+import React, { useState, useEffect } from 'react';
 
-const Changer = () => {
+const Changer = (props) => {
+    const [state, setState] = useState({
+        category: '',
+    })
+
+    useEffect(()=> {
+        setState({category: props.category})
+    },[])
+    const handleShelfChange = (event) => {
+        event.preventDefault()
+        props.handleShelfChange(props.bookTitle, event.target.value);
+    }
+    // console.log(props.category)
     return(
         <div className="book-shelf-changer">
-            <select>
+            <select onChange={handleShelfChange} value={props.category}>
             <option value="move" disabled>Move to...</option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
+            <option value="Currently Reading">Currently Reading</option>
+            <option value="Want to Read">Want to Read</option>
+            <option value="Read">Read</option>
+            <option value="None">None</option>
             </select>
         </div>
     )
