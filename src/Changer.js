@@ -1,14 +1,7 @@
-import { checkPropTypes } from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Changer = (props) => {
-    const [state, setState] = useState({
-        category: '',
-    })
 
-    useEffect(()=> {
-        setState({category: props.category})
-    },[])
     const handleShelfChange = (event) => {
         event.preventDefault()
         if(event.target.value === 'Delete'){
@@ -17,7 +10,7 @@ const Changer = (props) => {
             props.handleShelfChange(props.bookTitle, event.target.value);
         }
     }
-    // console.log(props.category)
+
     return(
         <div className="book-shelf-changer">
             <select onChange={handleShelfChange} value={props.category}>
