@@ -17,7 +17,8 @@ const BookShelf = (props) => {
               key={index}
               books= {props.books}
               shelfTitle={title}
-              handleShelfChange={props.handleShelfChange}/>
+              handleShelfChange={props.handleShelfChange}
+              handleDelete = {props.handleDelete}/>
             ))}            
         </div>
       </div>

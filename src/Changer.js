@@ -11,7 +11,11 @@ const Changer = (props) => {
     },[])
     const handleShelfChange = (event) => {
         event.preventDefault()
-        props.handleShelfChange(props.bookTitle, event.target.value);
+        if(event.target.value === 'Delete'){
+            props.handleDelete(props.bookTitle)
+        }else{
+            props.handleShelfChange(props.bookTitle, event.target.value);
+        }
     }
     // console.log(props.category)
     return(
@@ -21,7 +25,7 @@ const Changer = (props) => {
             <option value="Currently Reading">Currently Reading</option>
             <option value="Want to Read">Want to Read</option>
             <option value="Read">Read</option>
-            <option value="None">None</option>
+            <option value="Delete">Delete</option>
             </select>
         </div>
     )

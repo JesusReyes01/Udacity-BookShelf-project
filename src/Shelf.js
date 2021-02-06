@@ -13,7 +13,8 @@ const Shelf = (props) => {
                         <Book 
                             key= {i}
                             book = {book} 
-                            handleShelfChange = {props.handleShelfChange}/>
+                            handleShelfChange = {props.handleShelfChange}
+                            handleDelete = {props.handleDelete}/>
                     ))}
                 </ol>
             </div>

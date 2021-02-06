@@ -55,12 +55,16 @@ class BooksApp extends React.Component {
   }
 
   handleShelfChange = (title, newCategory) => {
-    console.log('title', title)
-    console.log('newCat', newCategory)
-    console.log(this.state.books)
     const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
-   
     this.setState({...this.state, books: [...this.state.books, this.state.books[bookIndex].category = newCategory]})
+  }
+
+  handleDelete = (title) => {
+    const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
+    let currentBooksArray = [...this.state.books]
+    currentBooksArray.splice(bookIndex,1)
+    this.setState({books: currentBooksArray})
+
   }
 
   render() {
@@ -71,6 +75,7 @@ class BooksApp extends React.Component {
           <BookShelf
             books={this.state.books}
             handleShelfChange = {this.handleShelfChange}
+            handleDelete = {this.handleDelete}
           />
         ))}
         />

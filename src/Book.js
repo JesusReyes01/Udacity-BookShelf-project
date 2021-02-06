@@ -14,6 +14,7 @@ const Book = (props) => {
                         category={props.book.category}
                         handleShelfChange = {props.handleShelfChange}
                         bookTitle={props.book.bookTitle}
+                        handleDelete = {props.handleDelete}
                     />
                 </div>
                 <div className="book-title">{props.book.bookTitle}</div>
