@@ -1,5 +1,5 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './BookShelf';
 import BookSearch from './BookSearch';
@@ -53,6 +53,14 @@ class BooksApp extends React.Component {
       },
     ]
   }
+  // componentDidMount() {
+  //   BooksAPI.getAll()
+  //     .then((books) => {
+  //       this.setState(() => ({
+  //         books
+  //       }))
+  //     })
+  // }
 
   handleShelfChange = (title, newCategory) => {
     const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
