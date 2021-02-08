@@ -8,7 +8,7 @@ const Book = (props) => {
         <li>
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `${props.book.imageURL}` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.book.imageURL})` }}></div>
                     <Changer 
                         category={props.book.category}
                         handleShelfChange = {props.handleShelfChange}
