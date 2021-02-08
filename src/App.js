@@ -1,5 +1,5 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
+// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './BookShelf';
 import BookSearch from './BookSearch';
@@ -64,7 +64,9 @@ class BooksApp extends React.Component {
 
   handleShelfChange = (title, newCategory) => {
     const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
-    this.setState({...this.state, books: [...this.state.books, this.state.books[bookIndex].category = newCategory]})
+    const booksArray = [...this.state.books]
+    booksArray[bookIndex].category = newCategory
+    this.setState({books: booksArray})
   }
 
   handleDelete = (title) => {

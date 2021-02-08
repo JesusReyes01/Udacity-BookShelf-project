@@ -10,7 +10,6 @@ class BookSearch extends Component {
         event.preventDefault();
         this.setState({search: event.target.value})
     }
-    // let [search, setSearch] = useState('');
     render(){
         return(
             <div className="search-books">
