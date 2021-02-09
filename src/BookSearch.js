@@ -54,10 +54,8 @@ class BookSearch extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        
-                        {this.state.searchResults.length > 0 ?
+                        {this.state.searchResults.length > 0 &&
                             this.state.searchResults.map( (result,i) => {
-                                console.log(result)
                                 let thumbnail = ''
                                 if(result.imageLinks){
                                     thumbnail = result.imageLinks.thumbnail
@@ -79,14 +77,13 @@ class BookSearch extends Component {
                                         book={searchedBook}
                                         handleShelfChange={this.props.handleShelfChange}/>
                                 )
-                                }): this.state.search.length > 0 ?
-                                    <NoResults 
-                                        search = {this.state.search}/>
-                                    :
-                                    <>
-                                    </>
+                                })
                         }
                     </ol>
+                    {this.state.search.length > 0 && !Array.isArray(this.state.searchResults) &&
+                    <NoResults
+                        search = {this.state.search}/>
+                    }
                 </div>
             </div>
         )
