@@ -122,6 +122,38 @@ button:active {
   padding: 80px 10px 20px;
 }
 
+/* no results pop-up */
+
+.no-result-icon {
+  width: 60px;
+  height: 60px;
+  background-image: url('./icons/round-info-button.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px;
+  font-size: 0;
+  border: none;
+  outline: none;
+  margin: 0 10px;
+  
+}
+
+.no-result-block {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 80vw;
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px 5px 0px;
+}
+
+.no-result-message {
+  display: flex;
+  flex-direction: column;
+}
+
 /* books grid */
 
 .books-grid {

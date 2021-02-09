@@ -5,9 +5,9 @@ const Changer = (props) => {
     const handleShelfChange = (event) => {
         event.preventDefault()
         if(event.target.value === 'Delete'){
-            props.handleDelete(props.bookTitle)
+            props.handleDelete(props.book.bookTitle)
         }else{
-            props.handleShelfChange(props.bookTitle, event.target.value);
+            props.handleShelfChange(props.book, event.target.value);
         }
     }
 
@@ -18,7 +18,7 @@ const Changer = (props) => {
             <option value="Currently Reading">Currently Reading</option>
             <option value="Want to Read">Want to Read</option>
             <option value="Read">Read</option>
-            <option value="Delete">Delete</option>
+            <option value="None">None</option>
             </select>
         </div>
     )

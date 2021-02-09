@@ -12,7 +12,7 @@ const Book = (props) => {
                     <Changer 
                         category={props.book.category}
                         handleShelfChange = {props.handleShelfChange}
-                        bookTitle={props.book.bookTitle}
+                        book={props.book}
                         handleDelete = {props.handleDelete}
                     />
                 </div>

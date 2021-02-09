@@ -62,18 +62,28 @@ class BooksApp extends React.Component {
   //     })
   // }
 
-  handleShelfChange = (title, newCategory) => {
-    const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
+  handleShelfChange = (book, newCategory) => {
+    const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === book.bookTitle)
     const booksArray = [...this.state.books]
-    booksArray[bookIndex].category = newCategory
-    this.setState({books: booksArray})
+    if (bookIndex >= 0){
+      booksArray[bookIndex].category = newCategory
+      this.setState({...this.state, books: booksArray})
+    }
+    else{
+      let bookCopy = book;
+      bookCopy.category = newCategory;
+      this.setState({books: [...this.state.books, bookCopy] })
+    }
+    
+
+
   }
 
   handleDelete = (title) => {
     const bookIndex = this.state.books.findIndex( e =>  e.bookTitle === title)
     let currentBooksArray = [...this.state.books]
     currentBooksArray.splice(bookIndex,1)
-    this.setState({books: currentBooksArray})
+    this.setState({...this.state, books: currentBooksArray})
 
   }
 
@@ -81,7 +91,7 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-        <Route exact path='/' render={(()=>(
+        <Route exact path='/' render={(() => (
           <BookShelf
             books={this.state.books}
             handleShelfChange = {this.handleShelfChange}
@@ -89,8 +99,16 @@ class BooksApp extends React.Component {
           />
         ))}
         />
-        <Route path='/bookSearch' component={BookSearch}/>
-        
+        <Route path='/bookSearch' render={({ history }) => (
+          <BookSearch 
+            handleShelfChange = {(book, newCategory) => {
+              this.handleShelfChange(book, newCategory)
+              history.push('/')
+            }}
+            handleDelete = {this.handleDelete}
+          />
+        )}
+        />
       </div>
     )
   }
