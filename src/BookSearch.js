@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 import NoResults from './NoResults'
+import NoImageFound from './images/No-image-found.jpg'
 
 
 class BookSearch extends Component {
@@ -12,13 +13,20 @@ class BookSearch extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.search !== prevState) {
+        if (this.state.search !== prevState.search) {
+            if(this.state.search === ""){
+                this.setState(() => ({
+                    searchResults: []
+                }))
+            }
+            else{
             BooksAPI.search(this.state.search)
                 .then((results) => {
                     this.setState(() => ({
-                    searchResults: results
-                    }))
+                        searchResults: results
+                    }))                   
                 })
+            }
         }
     }
 
@@ -49,24 +57,34 @@ class BookSearch extends Component {
                         
                         {this.state.searchResults.length > 0 ?
                             this.state.searchResults.map( (result,i) => {
+                                console.log(result)
+                                let thumbnail = ''
+                                if(result.imageLinks){
+                                    thumbnail = result.imageLinks.thumbnail
+                                }
+                                else {
+                                    thumbnail = NoImageFound                              
+                                }
+                                
                                 let searchedBook = {
                                         category: 'None',
-                                        imageURL: result.imageLinks.thumbnail,
+                                        imageURL: thumbnail,
                                         bookTitle: result.title,
                                         bookAuthors: result.authors
-                            }
-                            return(
-                                <Book
-                                    key={i}
-                                    book={searchedBook}
-                                    handleShelfChange={this.props.handleShelfChange}/>
-                            )
-                            }): this.state.search.length > 0 ?
-                                <NoResults 
-                                    search = {this.state.search}/>
-                                :
-                                <>
-                                </>
+                                }
+                            
+                                return(
+                                    <Book
+                                        key={i}
+                                        book={searchedBook}
+                                        handleShelfChange={this.props.handleShelfChange}/>
+                                )
+                                }): this.state.search.length > 0 ?
+                                    <NoResults 
+                                        search = {this.state.search}/>
+                                    :
+                                    <>
+                                    </>
                         }
                     </ol>
                 </div>
