@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 const Changer = (props) => {
 
@@ -33,6 +35,11 @@ const Changer = (props) => {
             </select>
         </div>
     )
+}
+Changer.propTypes = {
+    books: PropTypes.array.isRequired,
+    book: PropTypes.object.isRequired,
+    handleShelfChange: PropTypes.func.isRequired
 }
 
 export default Changer;

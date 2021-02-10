@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import Shelf from './Shelf'
 
 const BookShelf = (props) => {
-  const shelves = ["currentlyReading", "wantToRead", "read"]
+  const shelves = [{value: "currentlyReading", title: "Currently Reading"},
+                  {value: "wantToRead", title: "Want To Read"},
+                  {value: "read", title: "Read"},
+  "wantToRead", "read"]
 
   return(
     <div className="list-books">
@@ -12,13 +15,13 @@ const BookShelf = (props) => {
       </div>
       <div className="list-books-content">
         <div>
-            {shelves.map( (title, index) => (
+            {shelves.map( (titleObj, index) => (
               <Shelf 
-              key={index}
-              books= {props.books}
-              shelfTitle={title}
-              handleShelfChange={props.handleShelfChange}
-              handleDelete = {props.handleDelete}/>
+                key={index}
+                books= {props.books}
+                titleObj={titleObj}
+                handleShelfChange={props.handleShelfChange}
+              />
             ))}            
         </div>
       </div>
