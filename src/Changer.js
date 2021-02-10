@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const Changer = (props) => {
 
     const handleShelfChange = (event) => {
@@ -36,6 +35,7 @@ const Changer = (props) => {
         </div>
     )
 }
+
 Changer.propTypes = {
     books: PropTypes.array.isRequired,
     book: PropTypes.object.isRequired,

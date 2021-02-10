@@ -1,8 +1,7 @@
 import React from 'react';
 import Changer from './Changer'
 import NoImageFound from './images/No-image-found.jpg'
-
-
+import PropTypes from 'prop-types';
 
 const Book = (props) => {
 
@@ -14,7 +13,6 @@ const Book = (props) => {
         thumbnail = NoImageFound                              
     }
  
-
     return(
         <li>
             <div className="book">
@@ -24,16 +22,20 @@ const Book = (props) => {
                         handleShelfChange = {props.handleShelfChange}
                         book={props.book}
                         books={props.books}
-
                     />
+
                 </div>
                 <div className="book-title">{props.book.title}</div>
                 <div className="book-authors">{props.book.authors}</div>
             </div>
-        </li>
-            
+        </li>      
     )
+}
 
+Book.propTypes = {
+    books: PropTypes.array.isRequired,
+    book: PropTypes.object.isRequired,
+    handleShelfChange: PropTypes.func.isRequired
 }
 
 export default Book;
