@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 import NoResults from './NoResults'
-import NoImageFound from './images/No-image-found.jpg'
 
 
 class BookSearch extends Component {
@@ -20,13 +19,13 @@ class BookSearch extends Component {
                 }))
             }
             else{
-            BooksAPI.search(this.state.search)
-                .then((results) => {
-                    this.setState(() => ({
-                        searchResults: results
-                    }))                   
-                })
-            }
+                BooksAPI.search(this.state.search.toLowerCase())
+                    .then((results) => {
+                        this.setState(() => ({
+                            searchResults: results
+                        }))                   
+                    })
+                }
         }
     }
 
@@ -56,28 +55,15 @@ class BookSearch extends Component {
                     <ol className="books-grid">
                         {this.state.searchResults.length > 0 &&
                             this.state.searchResults.map( (result,i) => {
-                                let thumbnail = ''
-                                if(result.imageLinks){
-                                    thumbnail = result.imageLinks.thumbnail
-                                }
-                                else {
-                                    thumbnail = NoImageFound                              
-                                }
-                                
-                                let searchedBook = {
-                                        category: 'None',
-                                        imageURL: thumbnail,
-                                        bookTitle: result.title,
-                                        bookAuthors: result.authors
-                                }
-                            
                                 return(
                                     <Book
                                         key={i}
-                                        book={searchedBook}
-                                        handleShelfChange={this.props.handleShelfChange}/>
+                                        books={this.props.books}
+                                        book={result}
+                                        handleShelfChange={this.props.handleShelfChange}
+                                        handleDelete={this.props.handleDelete}/>
                                 )
-                                })
+                            })
                         }
                     </ol>
                     {this.state.search.length > 0 && !Array.isArray(this.state.searchResults) &&

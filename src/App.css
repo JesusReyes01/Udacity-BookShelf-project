@@ -147,6 +147,7 @@ button:active {
   align-items: center;
   justify-content: center;
   padding: 5px 20px 5px 0px;
+  margin: 0 auto;
 }
 
 .no-result-message {
