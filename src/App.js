@@ -43,7 +43,7 @@ class BooksApp extends React.Component {
           />
         ))}
         />
-        <Route path='/bookSearch' render={({ history }) => (
+        <Route path='/search' render={({ history }) => (
           <BookSearch 
             handleShelfChange = {(book, newCategory) => {
               this.handleShelfChange(book, newCategory)

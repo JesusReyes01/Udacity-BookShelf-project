@@ -27,7 +27,7 @@ const BookShelf = (props) => {
         </div>
       </div>
       <div className="open-search">
-          <Link to='/bookSearch'>
+          <Link to='/search'>
               <button >Add a book</button>
           </Link>
       </div>
