@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 import NoResults from './NoResults';
+import SearchBar from './SearchBar';
 import PropTypes from 'prop-types';
-
-
 
 class BookSearch extends Component {
     state = {
@@ -39,20 +37,10 @@ class BookSearch extends Component {
     render(){
         return(
             <div className="search-books">
-                <div className="search-books-bar">
-                    <Link to='/'>
-                        <button className="close-search">Close</button>
-                    </Link>
-                    <div className="search-books-input-wrapper">
-                        <input 
-                            type="text"
-                            placeholder="Search by title or author"
-                            value={this.state.search}
-                            onChange={this.handleSearch}
-                            />
+                <SearchBar 
+                    search={this.state.search}
+                    handleSearch={this.handleSearch}/>
 
-                    </div>
-                </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.state.searchResults.length > 0 &&
@@ -68,6 +56,7 @@ class BookSearch extends Component {
                             })
                         }
                     </ol>
+                    
                     {this.state.search.length > 0 && !Array.isArray(this.state.searchResults) &&
                     <NoResults
                         search = {this.state.search}/>
