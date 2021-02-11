@@ -5,13 +5,6 @@ import PropTypes from 'prop-types';
 
 const Book = (props) => {
 
-    // let thumbnail = ''
-    // if(props.book.imageLinks){
-    //     thumbnail = props.book.imageLinks.thumbnail
-    // }
-    // else {
-    //     thumbnail = NoImageFound                              
-    // }
     const thumbnail = props.book?.imageLinks?.thumbnail ?? NoImageFound;
  
     return(
@@ -27,7 +20,7 @@ const Book = (props) => {
 
                 </div>
                 <div className="book-title">{props.book.title}</div>
-                <div className="book-authors">{props.book.authors}</div>
+                <div className="book-authors">{props.book.authors && props.book.authors.join(', ')}</div>
             </div>
         </li>      
     )

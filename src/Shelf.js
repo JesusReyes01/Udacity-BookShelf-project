@@ -9,9 +9,9 @@ const Shelf = (props) => {
             <h2 className="bookshelf-title">{props.titleObj.title}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {props.books.filter( (book) => book.shelf === `${props.titleObj.value}`).map( (book, i) => (
+                    {props.books.filter( (book) => book.shelf === `${props.titleObj.value}`).map( (book) => (
                         <Book 
-                            key= {i}
+                            key= {book.id}
                             book = {book} 
                             books = {props.books}
                             handleShelfChange = {props.handleShelfChange}
