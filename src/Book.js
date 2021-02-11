@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
 
 const Book = (props) => {
 
-    let thumbnail = ''
-    if(props.book.imageLinks){
-        thumbnail = props.book.imageLinks.thumbnail
-    }
-    else {
-        thumbnail = NoImageFound                              
-    }
+    // let thumbnail = ''
+    // if(props.book.imageLinks){
+    //     thumbnail = props.book.imageLinks.thumbnail
+    // }
+    // else {
+    //     thumbnail = NoImageFound                              
+    // }
+    const thumbnail = props.book?.imageLinks?.thumbnail ?? NoImageFound;
  
     return(
         <li>
