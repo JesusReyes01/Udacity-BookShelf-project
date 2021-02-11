@@ -8,20 +8,9 @@ const Changer = (props) => {
         props.handleShelfChange(props.book, event.target.value);
         
     }
-    let found = false;
-    let currentShelf = '';
-    if (props.books) {
-        for(let i = 0; i < props.books.length; i++) {
-            if (props.books[i].id === props.book.id) {
-                found = true;
-                currentShelf = props.books[i].shelf
-                break;
-            }
-        }
-    }
 
-    let bookValue = props.book.shelf ? props.book.shelf : 'none';
-    bookValue = found?bookValue=currentShelf:bookValue;
+    const bookOnShelf = props.books && props.books.find(({ id }) => id === props.book.id);
+    const bookValue = bookOnShelf ? bookOnShelf.shelf : 'none';
 
     return(
         <div className="book-shelf-changer">

@@ -31,14 +31,14 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-        <Route exact path='/' render={(() => (
+        <Route exact path='/'>
           <BookShelf
             books={this.state.books}
             handleShelfChange = {this.handleShelfChange}
             handleDelete = {this.handleDelete}
           />
-        ))}
-        />
+          
+        </Route>
         <Route path='/search' render={({ history }) => (
           <BookSearch 
             handleShelfChange = {(book, newCategory) => {
